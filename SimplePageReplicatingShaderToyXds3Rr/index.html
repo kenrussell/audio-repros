@@ -1,0 +1,35 @@
+<body onload="start()">
+<p>
+
+Simple page attempting to replicate essential behavior from <a href="https://www.shadertoy.com/view/Xds3Rr">https://www.shadertoy.com/view/Xds3Rr</a>.
+
+</p>
+<p>
+
+Essential notes from the actual page:
+
+</p>
+
+<ul>
+
+<li> The HTMLAudioElement is instantiated in ShaderToy's <a href="https://www.shadertoy.com/js/effect.js">effect.js</a> via <code>document.createElement('audio')</code>, line 1524.
+<li> Its src is set up at line 1627 in the same file.
+<li> Its initial call to play() is made inside the <code>canPlay</code> event listener at line 1583.
+<li> Afterward, when toggling the play/pause button on the page, calls to <code>HTMLAudioElement.play()</code> are made inside <code>EffectPass.prototype.ResumeInput</code> in the same file, line 660.
+<li> The event handler for the play/pause button is in <a href="https://www.shadertoy.com/js/pgWatch.js">pgWatch.js</a>, line 381.
+
+</ul>
+
+<p>
+
+As far as I can tell, the MEI score does not increase when toggling the play/pause button on the site, even though those calls to play() happen inside an event handler with a user gesture.
+
+</p>
+
+<script src='script.js'>
+</script>
+
+<div id="button">
+</div>
+
+</body>
